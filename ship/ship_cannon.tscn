@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bulpu40phn4e6"]
+
+[ext_resource type="Script" path="res://ship/ship/ship_cannon/Ship_cannon.gd" id="1_07ik2"]
+[ext_resource type="PackedScene" uid="uid://dd66ys3wrrria" path="res://ship/projectile/projectile.tscn" id="2_e3jyi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uympd"]
+load_path = "res://.godot/imported/ship_cannon_frames.png-4d2a8d1f77c7bf2e4966d2a5058084cd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2v5x"]
+atlas = SubResource("CompressedTexture2D_uympd")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ax6o"]
+atlas = SubResource("CompressedTexture2D_uympd")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_necdv"]
+atlas = SubResource("CompressedTexture2D_uympd")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6kif"]
+atlas = SubResource("CompressedTexture2D_uympd")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui883"]
+atlas = SubResource("CompressedTexture2D_uympd")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3my7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2v5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ax6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_necdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6kif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui883")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[node name="Ship_cannon" type="Node2D"]
+script = ExtResource("1_07ik2")
+projectile_scene = ExtResource("2_e3jyi")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h3my7")
+animation = &"fire"
+speed_scale = 4.0
+
+[node name="popup" type="Node2D" parent="."]
+visible = false
+
+[node name="Fire_direction" type="Line2D" parent="popup"]
+points = PackedVector2Array(0, 0, 0, -500)
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_animations_animation_finished"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://e0spje8mgel7"]
+
+[ext_resource type="Texture2D" uid="uid://b5xnrhcbl5n5e" path="res://cannon/cannon.png" id="1_pnril"]
+[ext_resource type="PackedScene" uid="uid://cbpxcrnteva4d" path="res://inventory/item_holder.tscn" id="2_dnmit"]
+
+[node name="Reward_bin" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pnril")
+
+[node name="Item_holder" parent="." instance=ExtResource("2_dnmit")]
+position = Vector2(0, 160)
+
+[node name="Item_holder2" parent="." instance=ExtResource("2_dnmit")]
+position = Vector2(2, 40)
+
+[node name="Item_holder3" parent="." instance=ExtResource("2_dnmit")]
+position = Vector2(0, -82)

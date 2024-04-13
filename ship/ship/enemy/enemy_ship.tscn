@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://blx2kc7aosdru"]
+
+[ext_resource type="Script" path="res://ship/ship/enemy/enemy_ship.gd" id="1_i72uo"]
+[ext_resource type="Texture2D" uid="uid://d34kydauni8by" path="res://ship/ship/ship.png" id="1_o41iv"]
+[ext_resource type="PackedScene" uid="uid://doixgf1jeegr2" path="res://Misc/Health/health_handler.tscn" id="2_01ea7"]
+[ext_resource type="PackedScene" uid="uid://dik8fcwavm0xw" path="res://Misc/Health/health_bar.tscn" id="4_w7d47"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ei4il"]
+radius = 75.0
+height = 482.0
+
+[node name="EnemyShip" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_i72uo")
+
+[node name="Health_handler" parent="." instance=ExtResource("2_01ea7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o41iv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ei4il")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ei4il")
+
+[node name="Health_bar" parent="." node_paths=PackedStringArray("health_handler") instance=ExtResource("4_w7d47")]
+position = Vector2(0, -189)
+health_handler = NodePath("../Health_handler")

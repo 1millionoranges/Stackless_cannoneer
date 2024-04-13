@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbmedoofyqxw2"]
+
+[ext_resource type="PackedScene" uid="uid://b3lbw5qxy1e2t" path="res://ship/ship/ship.tscn" id="1_0tjux"]
+[ext_resource type="Script" path="res://full combat/ship_combat/ship_combat.gd" id="1_cdsy7"]
+[ext_resource type="PackedScene" uid="uid://hlkmuan0hmdq" path="res://ship/water/water.tscn" id="2_kgy0e"]
+[ext_resource type="PackedScene" uid="uid://blx2kc7aosdru" path="res://ship/ship/enemy/enemy_ship.tscn" id="3_lixr1"]
+
+[node name="ShipCombat" type="Node2D"]
+script = ExtResource("1_cdsy7")
+
+[node name="Water" parent="." instance=ExtResource("2_kgy0e")]
+position = Vector2(282.673, 617.764)
+scale = Vector2(12.2167, -10.2676)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(357.673, 868.764)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Ship" parent="." instance=ExtResource("1_0tjux")]
+position = Vector2(357.673, 868.764)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ship"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+
+[node name="EnemyShip" parent="." instance=ExtResource("3_lixr1")]
+position = Vector2(365, 440)

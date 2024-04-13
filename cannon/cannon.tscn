@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://baygvj3xkwsqf"]
+
+[ext_resource type="Texture2D" uid="uid://b5xnrhcbl5n5e" path="res://cannon/cannon.png" id="1_rb3ag"]
+[ext_resource type="Script" path="res://cannon/cannon.gd" id="1_y0pcj"]
+[ext_resource type="PackedScene" uid="uid://cbpxcrnteva4d" path="res://inventory/item_holder.tscn" id="2_nqjbh"]
+[ext_resource type="Texture2D" uid="uid://cmubc7bvrpd2q" path="res://icon.svg" id="4_043ji"]
+[ext_resource type="PackedScene" uid="uid://2trnof8i3m8v" path="res://ship/popup_mouseover.tscn" id="5_kxwsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouf7t"]
+size = Vector2(250, 940)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yiq1s"]
+radius = 152.58
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xsxdv"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 27.794
+initial_velocity_min = 227.94
+initial_velocity_max = 279.41
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ktx"]
+size = Vector2(278.333, 1015)
+
+[node name="Cannon" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_y0pcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rb3ag")
+
+[node name="Item_holders" type="Node2D" parent="."]
+position = Vector2(0, 384)
+
+[node name="Item_holder1" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+is_interactable = false
+
+[node name="Item_holder2" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(-2, -121)
+is_interactable = false
+
+[node name="Item_holder3" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(2, -238)
+is_interactable = false
+
+[node name="Item_holder4" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(2, -357)
+is_interactable = false
+
+[node name="Item_holder5" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(2, -471)
+is_interactable = false
+
+[node name="Item_holder6" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(2, -588)
+is_interactable = false
+
+[node name="Item_holder7" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(2, -714)
+is_interactable = false
+
+[node name="Item_holder8" parent="Item_holders" instance=ExtResource("2_nqjbh")]
+position = Vector2(0, -828)
+is_interactable = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.33333, -8.33333)
+shape = SubResource("RectangleShape2D_ouf7t")
+
+[node name="Fuse" type="Area2D" parent="."]
+position = Vector2(0, 526.667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fuse"]
+shape = SubResource("CircleShape2D_yiq1s")
+
+[node name="Fuse_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 448.333)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_xsxdv")
+texture = ExtResource("4_043ji")
+
+[node name="Popup_mouseover" parent="." instance=ExtResource("5_kxwsa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popup_mouseover"]
+position = Vector2(0.833333, 30.8333)
+shape = SubResource("RectangleShape2D_y2ktx")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Fuse" to="." method="_on_fuse_input_event"]

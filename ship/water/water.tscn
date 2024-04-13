@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://hlkmuan0hmdq"]
+
+[ext_resource type="Texture2D" uid="uid://dokhiiri6ium0" path="res://ship/water.png" id="1_mdgo2"]
+[ext_resource type="Shader" path="res://ship/water/water.gdshader" id="1_uw4wg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6s2ew"]
+shader = ExtResource("1_uw4wg")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p23og"]
+size = Vector2(200, 200)
+subdivide_width = 1
+subdivide_depth = 2
+orientation = 2
+
+[node name="Water" type="MeshInstance2D"]
+modulate = Color(0.733333, 0.811765, 0.898039, 1)
+texture_filter = 3
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6s2ew")
+position = Vector2(238, 160)
+mesh = SubResource("PlaneMesh_p23og")
+texture = ExtResource("1_mdgo2")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmofs3bbgofi"]
+
+[ext_resource type="Script" path="res://inventory/Inventory.gd" id="1_m1njo"]
+[ext_resource type="PackedScene" uid="uid://dv71rmu87y26c" path="res://inventory/item.tscn" id="2_6a5uq"]
+[ext_resource type="PackedScene" uid="uid://cbpxcrnteva4d" path="res://inventory/item_holder.tscn" id="2_oiq87"]
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_m1njo")
+item_scene = ExtResource("2_6a5uq")
+
+[node name="Item_holder1" parent="." instance=ExtResource("2_oiq87")]
+
+[node name="Item_holder2" parent="." instance=ExtResource("2_oiq87")]
+position = Vector2(128, 2)
+
+[node name="Item_holder3" parent="." instance=ExtResource("2_oiq87")]
+position = Vector2(-120, 3)
+
+[node name="Item_holder4" parent="." instance=ExtResource("2_oiq87")]
+position = Vector2(269, 0)
+
+[node name="Item_holder5" parent="." instance=ExtResource("2_oiq87")]
+position = Vector2(-242, 4)

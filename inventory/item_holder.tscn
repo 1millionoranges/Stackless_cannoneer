@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbpxcrnteva4d"]
+
+[ext_resource type="Script" path="res://inventory/Item_holder.gd" id="1_tkrej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qor7"]
+size = Vector2(100, 100)
+
+[node name="Item_holder" type="Node2D"]
+script = ExtResource("1_tkrej")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0qor7")
+
+[node name="Item_holder_node" type="Node2D" parent="."]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

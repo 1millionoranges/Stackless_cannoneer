@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://drj3tclneldo8"]
+
+[ext_resource type="Script" path="res://full combat/full_combat.gd" id="1_f0atc"]
+[ext_resource type="PackedScene" uid="uid://3k6f2vbra6e3" path="res://full combat/cannon_combat/cannon_combat.tscn" id="1_n8kls"]
+[ext_resource type="PackedScene" uid="uid://bbmedoofyqxw2" path="res://full combat/ship_combat/ship_combat.tscn" id="2_wnhy6"]
+[ext_resource type="PackedScene" uid="uid://8ti8r303fqmo" path="res://inventory/mouse_follower.tscn" id="4_2fdvo"]
+[ext_resource type="PackedScene" uid="uid://bosof5uusiq0g" path="res://screens/ui_buttons.tscn" id="5_a3t1s"]
+
+[node name="FullCombat" type="Node2D"]
+script = ExtResource("1_f0atc")
+
+[node name="CannonViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 512.0
+offset_bottom = 900.0
+
+[node name="SubViewport" type="SubViewport" parent="CannonViewportContainer"]
+handle_input_locally = false
+size = Vector2i(512, 900)
+render_target_update_mode = 4
+
+[node name="CannonCombat" parent="." instance=ExtResource("1_n8kls")]
+position = Vector2(52, -2)
+
+[node name="ShipViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 742.0
+offset_top = 53.0
+offset_right = 1542.0
+offset_bottom = 853.0
+
+[node name="SubViewport" type="SubViewport" parent="ShipViewportContainer"]
+handle_input_locally = false
+size = Vector2i(800, 800)
+render_target_update_mode = 4
+
+[node name="ShipCombat" parent="ShipViewportContainer/SubViewport" instance=ExtResource("2_wnhy6")]
+
+[node name="Mouse_follower" parent="." instance=ExtResource("4_2fdvo")]
+
+[node name="UI Buttons" parent="." instance=ExtResource("5_a3t1s")]

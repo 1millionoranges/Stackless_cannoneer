@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3lbw5qxy1e2t"]
+
+[ext_resource type="Script" path="res://ship/ship/ship.gd" id="1_g8jts"]
+[ext_resource type="Texture2D" uid="uid://d34kydauni8by" path="res://ship/ship/ship.png" id="2_1h8fm"]
+[ext_resource type="PackedScene" uid="uid://bulpu40phn4e6" path="res://ship/ship_cannon.tscn" id="3_7k0rw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dg8ak"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2tt4"]
+radius = 75.0
+height = 482.0
+
+[node name="Player_ship" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_dg8ak")
+gravity_scale = 0.0
+script = ExtResource("1_g8jts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1h8fm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i2tt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i2tt4")
+
+[node name="cannon1" parent="." instance=ExtResource("3_7k0rw")]
+position = Vector2(-81, -98)
+
+[node name="cannon2" parent="." instance=ExtResource("3_7k0rw")]
+position = Vector2(69, -98)

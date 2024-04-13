@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://byjbygtvifjn6"]
+
+[ext_resource type="Script" path="res://Misc/Info_popup/Info_popup.gd" id="1_5nb6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4xxe"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Info_popup" type="Area2D"]
+z_index = 20
+script = ExtResource("1_5nb6v")
+
+[node name="Popup" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Popup"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_c4xxe")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

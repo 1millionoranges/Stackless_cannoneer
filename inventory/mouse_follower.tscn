@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ti8r303fqmo"]
+
+[ext_resource type="Script" path="res://inventory/Mouse_follower.gd" id="1_neepy"]
+
+[node name="Mouse_follower" type="Node2D"]
+z_index = 10
+script = ExtResource("1_neepy")
+
+[node name="Item_holder_node" type="Node2D" parent="."]

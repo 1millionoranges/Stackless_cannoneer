@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bosof5uusiq0g"]
+
+[ext_resource type="Script" path="res://screens/UI Buttons.gd" id="1_7i7v2"]
+
+[node name="UI Buttons" type="Node2D"]
+script = ExtResource("1_7i7v2")
+
+[node name="Next_turn" type="Button" parent="."]
+offset_left = 662.0
+offset_top = 17.0
+offset_right = 913.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 50
+text = "Next Turn"
+
+[connection signal="pressed" from="Next_turn" to="." method="_on_next_turn_pressed"]
